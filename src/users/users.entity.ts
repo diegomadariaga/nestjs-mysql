@@ -14,7 +14,7 @@ export class User {
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAT: Date;
 
-  @Column({ nullable: true })
+  @Column({ type: 'datetime', nullable: true })
   updatedAT: Date;
 
   @Column({ nullable: true })
