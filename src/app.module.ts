@@ -15,7 +15,7 @@ import { env } from 'process';
       password: '123456',
       database: 'nestdb',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: env.NODE_ENV === 'development' ? true : false, // shouldn't be used in production - otherwise you can lose production data.
+      synchronize: true, // shouldn't be used in production - otherwise you can lose production data.
     }),
     UsersModule,
   ],
