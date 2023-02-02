@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { env } from 'process';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { env } from 'process';
       synchronize: true, // shouldn't be used in production - otherwise you can lose production data.
     }),
     UsersModule,
+    ProfileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -17,7 +17,7 @@ export class UsersService {
    * @returns The newUserDto object is being returned.
    */
   async createUser(user: newUserDto): Promise<newUserDto> {
-    if (await this.userExists(user.username)) {
+    if (await this.doesUserExists(user.username)) {
       throw new HttpException(
         'User with this username already exists',
         HttpStatus.CONFLICT,
@@ -39,7 +39,7 @@ export class UsersService {
    * @param {number} id - number - The id of the user we want to get.
    * @returns A promise of a newUserDto
    */
-  async getUserById(id: number): Promise<newUserDto> {
+  async getUserById(id: number): Promise<User> {
     const result = await this.userRepository.findOne({ where: { id } });
     if (!result) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
@@ -78,7 +78,7 @@ export class UsersService {
    * @param {string} username - string - The username of the user we want to check if exists.
    * @returns A boolean value.
    */
-  async userExists(username: string): Promise<boolean> {
+  async doesUserExists(username: string): Promise<boolean> {
     const user = await this.userRepository.findOne({ where: { username } });
     return Boolean(user);
   }
